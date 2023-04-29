@@ -6,7 +6,23 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 
 Node v19.6.0
 
+## Development Library
+
+### Prettier
+
+### ESLint
+
+### Husky
+
+If you want to skip the check, you can add a --no-verify flag to your commit command. For example: git commit --no-verify -m "Update README.md"
+
 ## Getting Started
+
+First, install the project depedencies
+
+```bash
+npm install
+```
 
 First, run the development server:
 
