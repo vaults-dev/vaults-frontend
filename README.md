@@ -1,20 +1,23 @@
-# Vaults
+# 🎮 Vaults
 
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+## This Project Using
+
+- [Typescript](https://www.typescriptlang.org/)
+- [ESLint](https://eslint.org/docs/user-guide/getting-started)
+- [Prettier](https://prettier.io/)
+- [Husky](https://github.com/typicode/husky)
+
+  If you want to skip the check, you can add a --no-verify flag to your commit command. For example:
+
+  ```bash
+  git commit --no-verify -m "Update README.md"
+  ```
+
+- [TailwindCSS](https://tailwindcss.com/)
 
 ## Requirement
 
 Node v19.6.0
-
-## Development Library
-
-### Prettier
-
-### ESLint
-
-### Husky
-
-If you want to skip the check, you can add a --no-verify flag to your commit command. For example: git commit --no-verify -m "Update README.md"
 
 ## Getting Started
 
@@ -24,7 +27,7 @@ First, install the project depedencies
 npm install
 ```
 
-First, run the development server:
+Next, run the development server:
 
 ```bash
 npm run dev
