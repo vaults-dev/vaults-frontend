@@ -13,6 +13,7 @@
   git commit --no-verify -m "Update README.md"
   ```
 
+- [LintStaged](https://github.com/okonet/lint-staged)
 - [TailwindCSS](https://tailwindcss.com/)
 
 ## Requirement
