@@ -4,7 +4,7 @@ module.exports = {
 
   // Lint then format TypeScript and JavaScript files
   '**/*.(ts|tsx|js)': (filenames) => [
-    `npx eslint --fix ${filenames.join(' ')}`,
+    `npm run lint`,
     `npx prettier --write ${filenames.join(' ')}`,
   ],
 
