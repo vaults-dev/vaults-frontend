@@ -13,6 +13,14 @@ module.exports = {
           'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
       },
     },
+    // Ensure these match with .storybook/preview.js
+    screens: {
+      xs: '375px',
+      sm: '600px',
+      md: '900px',
+      lg: '1200px',
+      xl: '1536px',
+    },
   },
   plugins: [],
 }
