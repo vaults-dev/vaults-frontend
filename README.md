@@ -16,6 +16,8 @@
 - [LintStaged](https://github.com/okonet/lint-staged)
 - [TailwindCSS](https://tailwindcss.com/)
 
+  Tailwind UI for React depends on [HeadlessUI](https://headlessui.com/) to power all of the interactive behavior and [Heroicons](https://heroicons.com/) for icons,
+
 ## Requirement
 
 Node v19.6.0
