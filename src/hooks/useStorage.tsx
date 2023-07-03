@@ -1,0 +1,3 @@
+const useStorage = () => {}
+
+export { useStorage }

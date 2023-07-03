@@ -33,6 +33,7 @@
         "allowSingleExtends": true
       }
     ],
+    "@typescript-eslint/no-empty-function": "warn",
 
     //Prettier
     "prettier/prettier": "error"
