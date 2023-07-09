@@ -10,13 +10,18 @@ module.exports = {
   theme: {
     container: {
       center: true,
-      padding: '2rem',
       screens: {
-        '2xl': '1400px',
+        '2xl': '90rem',
       },
     },
     extend: {
-      fontFamily: 'var(--font-family);',
+      spacing: {
+        18: '4.5rem',
+        132: '33rem',
+      },
+      fontFamily: {
+        sans: ['var(--font-sen)'],
+      },
       colors: {
         border: 'hsl(var(--border))',
         input: 'hsl(var(--input))',
@@ -25,10 +30,18 @@ module.exports = {
         foreground: 'hsl(var(--foreground))',
         primary: {
           DEFAULT: 'hsl(var(--primary))',
+          heavy: 'hsl(var(--primary-heavy))',
+          medium: 'hsl(var(--primary-medium))',
+          light: 'hsl(var(--primary-light))',
+          soft: 'hsl(var(--primary-soft))',
           foreground: 'hsl(var(--primary-foreground))',
         },
         secondary: {
           DEFAULT: 'hsl(var(--secondary))',
+          heavy: 'hsl(var(--secondary-heavy))',
+          medium: 'hsl(var(--secondary-medium))',
+          light: 'hsl(var(--secondary-light))',
+          soft: 'hsl(var(--secondary-soft))',
           foreground: 'hsl(var(--secondary-foreground))',
         },
         destructive: {
