@@ -2,7 +2,7 @@
 
 import * as z from 'zod'
 import { zodResolver } from '@hookform/resolvers/zod'
-import { useForm } from 'react-hook-form'
+import { useForm, useFormState } from 'react-hook-form'
 import {
   Button,
   Checkbox,
@@ -16,15 +16,25 @@ import {
 } from '@components/ui'
 import { toast } from '@components/ui/Toast/use-toast'
 
-const formSchema = z.object({
-  email: z.string().min(2, {
-    message: 'Username must be at least 2 characters.',
-  }),
-  password: z.string().min(2, {
-    message: 'Username must be at least 2 characters.',
-  }),
-  remember: z.boolean().default(false).optional(),
-})
+const formSchema = z
+  .object({
+    email: z
+      .string()
+      .nonempty({ message: 'Please fill in your email.' })
+      .email('Please fill in a valid email format.'),
+    password: z
+      .string()
+      .nonempty({ message: 'Please fill in your password.' })
+      .min(8, {
+        message: 'Password must be at least 8 characters.',
+      })
+      .regex(/^(?=.*[a-zA-Z])(?=.*[0-9])(?=.*[!@#$%^&*()\-=_+{};:"|,.<>/?])/, {
+        message:
+          'Use 8 or more characters with a mix of letters, numbers & symbols.',
+      }),
+    remember: z.boolean().default(false).optional(),
+  })
+  .refine((data) => data.email)
 
 export function SignInForm() {
   const form = useForm<z.infer<typeof formSchema>>({
@@ -35,6 +45,7 @@ export function SignInForm() {
       remember: false,
     },
   })
+  const { isDirty } = useFormState(form)
 
   return (
     <Form {...form}>
@@ -65,7 +76,7 @@ export function SignInForm() {
             </FormItem>
           )}
         />
-        <div className="flex justify-between">
+        <div className="flex justify-between pl-2">
           <FormField
             control={form.control}
             name="remember"
@@ -86,7 +97,7 @@ export function SignInForm() {
           <FormField
             control={form.control}
             name="remember"
-            render={({ field }) => (
+            render={() => (
               <FormItem>
                 <FormControl>
                   <Button variant="link">Forgot Password?</Button>
@@ -96,7 +107,7 @@ export function SignInForm() {
           />
         </div>
         <div className="flex pt-6">
-          <Button size={'lg'} type="submit">
+          <Button size={'lg'} disabled={!isDirty} type="submit">
             Submit
           </Button>
         </div>

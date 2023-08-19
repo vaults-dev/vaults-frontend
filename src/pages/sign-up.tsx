@@ -5,10 +5,11 @@ import {
   TabsContent,
   TabsList,
   TabsTrigger,
-  Toaster,
   Typography,
 } from '@components/ui'
 import { SignInForm } from '@modules/SignInForm'
+import { GoogleIcon, DiscordIcon, FacebookIcon } from '@components/icons'
+import { SignUpForm } from '@modules/SignUpForm'
 
 export default function SignUp() {
   return (
@@ -34,32 +35,38 @@ export default function SignUp() {
           </div>
           <div>
             <Tabs defaultValue="sign-in">
-              <TabsList className="grid grid-cols-2">
+              <TabsList className="mb-8 grid grid-cols-2">
                 <TabsTrigger value="sign-in">Sign In</TabsTrigger>
                 <TabsTrigger value="sign-up">Sign Up</TabsTrigger>
               </TabsList>
-              <TabsContent className="pt-12" value="sign-in">
+              <TabsContent value="sign-in">
                 <SignInForm />
               </TabsContent>
-              <TabsContent value="sign-up"></TabsContent>
+              <TabsContent value="sign-up">
+                <SignUpForm />
+              </TabsContent>
             </Tabs>
           </div>
           <div>
             <div className="text-center">Or Sign in With</div>
           </div>
           <div className="flex justify-center gap-6">
-            <div className="relative h-18 w-18 rounded-full">
-              {/* <Image src={Icons.GoogleIcon} alt="Hero Pattern" fill /> */}
+            <div className="relative h-18 w-18 rounded-full p-5 shadow-lg">
+              <GoogleIcon />
             </div>
-            <div className="rounded-full"></div>
-            <div className="rounded-full"></div>
+            <div className="relative h-18 w-18 rounded-full p-5 shadow-lg">
+              <FacebookIcon />
+            </div>
+            <div className="relative h-18 w-18 rounded-full p-5 shadow-lg">
+              <DiscordIcon />
+            </div>
           </div>
         </div>
+
         <div className="flex py-6 pr-6">
           <Image src="/image.png" alt="Hero Pattern" width={696} height={300} />
         </div>
       </div>
-      <Toaster />
     </div>
   )
 }

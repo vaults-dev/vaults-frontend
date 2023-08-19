@@ -1,3 +1,4 @@
+import { Toaster } from '@components/ui'
 import '@styles/globals.css'
 import type { AppProps } from 'next/app'
 import { Sen } from 'next/font/google'
@@ -12,6 +13,7 @@ export default function App({ Component, pageProps }: AppProps) {
   return (
     <main className={`${sen.variable} font-sans`}>
       <Component {...pageProps} />
+      <Toaster />
     </main>
   )
 }

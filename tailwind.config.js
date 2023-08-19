@@ -15,10 +15,6 @@ module.exports = {
       },
     },
     extend: {
-      spacing: {
-        18: '4.5rem',
-        132: '33rem',
-      },
       fontFamily: {
         sans: ['var(--font-sen)'],
       },
@@ -29,24 +25,28 @@ module.exports = {
         background: 'hsl(var(--background))',
         foreground: 'hsl(var(--foreground))',
         primary: {
-          DEFAULT: 'hsl(var(--primary))',
-          heavy: 'hsl(var(--primary-heavy))',
-          medium: 'hsl(var(--primary-medium))',
-          light: 'hsl(var(--primary-light))',
-          soft: 'hsl(var(--primary-soft))',
-          foreground: 'hsl(var(--primary-foreground))',
+          DEFAULT: 'hsl(var(--purple-1))',
+          heavy: 'hsl(var(--purple-2))',
+          medium: 'hsl(var(--purple-3))',
+          light: 'hsl(var(--purple-4))',
+          soft: 'hsl(var(--purple-5))',
+          foreground: 'hsl(var(--purple-foreground))',
         },
         secondary: {
-          DEFAULT: 'hsl(var(--secondary))',
-          heavy: 'hsl(var(--secondary-heavy))',
-          medium: 'hsl(var(--secondary-medium))',
-          light: 'hsl(var(--secondary-light))',
-          soft: 'hsl(var(--secondary-soft))',
-          foreground: 'hsl(var(--secondary-foreground))',
+          DEFAULT: 'hsl(var(--blue-1))',
+          heavy: 'hsl(var(--blue-2))',
+          medium: 'hsl(var(--blue-3))',
+          light: 'hsl(var(--blue-4))',
+          soft: 'hsl(var(--blue-5))',
+          foreground: 'hsl(var(--blue-foreground))',
         },
         destructive: {
-          DEFAULT: 'hsl(var(--destructive))',
-          foreground: 'hsl(var(--destructive-foreground))',
+          DEFAULT: 'hsl(var(--red-1))',
+          heavy: 'hsl(var(--red-2))',
+          medium: 'hsl(var(--red-3))',
+          light: 'hsl(var(--red-4))',
+          soft: 'hsl(var(--red-5))',
+          foreground: 'hsl(var(--red-foreground))',
         },
         muted: {
           DEFAULT: 'hsl(var(--muted))',
@@ -65,10 +65,17 @@ module.exports = {
           foreground: 'hsl(var(--card-foreground))',
         },
       },
+      spacing: {
+        18: '4.5rem',
+        132: '33rem',
+      },
       borderRadius: {
         lg: 'var(--radius)',
         md: 'calc(var(--radius) - 2px)',
         sm: 'calc(var(--radius) - 4px)',
+      },
+      boxShadow: {
+        lg: '0px 0px 8px rgba(0, 0, 0, 0.08)',
       },
       keyframes: {
         'accordion-down': {
