@@ -15,6 +15,9 @@ import {
   Input,
 } from '@components/ui'
 import { toast } from '@components/ui/Toast/use-toast'
+import { login } from '../../api/auth'
+import { web3AuthReconstructPrivateKey } from 'api/web3Auth'
+import { ethers } from 'ethers'
 
 const formSchema = z
   .object({
@@ -115,14 +118,60 @@ export function SignInForm() {
     </Form>
   )
 
+  async function setupWeb3Wallet(userUuid: string, jwt: string) {
+    const privateKey = await web3AuthReconstructPrivateKey({ userUuid, jwt })
+    const wallet = new ethers.Wallet(privateKey as string)
+    return wallet
+  }
+
   // 2. Define a submit handler.
-  function onSubmit(values: z.infer<typeof formSchema>) {
+  async function onSubmit(values: z.infer<typeof formSchema>) {
+    // TODO: handle loading
+    const loginResp = await login(values.email, values.password).catch(
+      (err) => {
+        toast({
+          title: 'Sign In Failed:',
+          description: (
+            <pre className="mt-2 w-[340px] rounded-md bg-red-400 p-4">
+              <code className="text-white">{err.message}</code>
+            </pre>
+          ),
+        })
+        return null
+      }
+    )
+
+    if (!loginResp) {
+      return
+    }
+
+    const { uuid, jwt } = loginResp
+    const wallet = await setupWeb3Wallet(uuid, jwt).catch((err) => {
+      toast({
+        title: 'Wallet Setup Failed:',
+        description: (
+          <pre className="mt-2 w-[340px] rounded-md bg-red-400 p-4">
+            <code className="text-white">{err.message}</code>
+          </pre>
+        ),
+      })
+      return null
+    })
+
+    if (!wallet) {
+      return
+    }
+
     toast({
-      title: 'You submitted the following values:',
+      title: 'Sign In Success',
       description: (
-        <pre className="mt-2 w-[340px] rounded-md bg-slate-950 p-4">
-          <code className="text-white">{JSON.stringify(values, null, 2)}</code>
-        </pre>
+        <div className="mt-2 w-[340px] rounded-md bg-slate-950 p-4">
+          <code className="text-white">You have successfully signed in</code>
+          <br />
+          <code className="text-white">Your wallet address is:</code>
+          <br />
+          <code className="break-words text-white">{wallet.address}</code>
+        </div>
       ),
     })
   }

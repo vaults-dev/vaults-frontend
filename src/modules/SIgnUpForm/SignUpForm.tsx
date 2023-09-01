@@ -15,6 +15,7 @@ import {
   Input,
 } from '@components/ui'
 import { toast } from '@components/ui/Toast/use-toast'
+import { signup } from '../../api/auth'
 
 const formSchema = z
   .object({
@@ -107,14 +108,30 @@ export function SignUpForm() {
   )
 
   // 2. Define a submit handler.
-  function onSubmit(values: z.infer<typeof formSchema>) {
-    toast({
-      title: 'You submitted the following values:',
-      description: (
-        <pre className="mt-2 w-[340px] rounded-md bg-slate-950 p-4">
-          <code className="text-white">{JSON.stringify(values, null, 2)}</code>
-        </pre>
-      ),
-    })
+  async function onSubmit(values: z.infer<typeof formSchema>) {
+    // TODO: handle loading
+    await signup(values.email, values.password)
+      .then((resp) => {
+        toast({
+          title: 'Sign Up Success:',
+          description: (
+            <pre className="mt-2 w-[340px] rounded-md bg-slate-950 p-4">
+              <code className="text-white">
+                You have successfully signed up
+              </code>
+            </pre>
+          ),
+        })
+      })
+      .catch((err) => {
+        toast({
+          title: 'Sign Up Failed:',
+          description: (
+            <pre className="mt-2 w-[340px] rounded-md bg-red-400 p-4">
+              <code className="text-white">{err.message}</code>
+            </pre>
+          ),
+        })
+      })
   }
 }
